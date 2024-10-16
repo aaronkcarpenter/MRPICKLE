@@ -1,13 +1,13 @@
 # MRPICKLE
 
-**M**anage
-**R**oles (and)
-**P**olicies
-**I**ncredibly
-**C**onveniently
-**K**eeping
-**L**ogins
-**E**fficient
+**M**anage  
+**R**oles (and)  
+**P**olicies  
+**I**ncredibly  
+**C**onveniently  
+**K**eeping  
+**L**ogins  
+**E**fficient  
 
 ## What?
 
