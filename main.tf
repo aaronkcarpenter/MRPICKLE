@@ -27,7 +27,7 @@ variable "description" {
   default     = "MRPICKLES generated login policy"
 }
 
-variable "lables" {
+variable "labels" {
   type        = list(string)
   description = "labels to add to the login policy"
   default     = null
@@ -43,7 +43,7 @@ resource "spacelift_policy" "this" {
   type        = "LOGIN"
   name        = var.name
   description = var.description
-  labels      = var.lables
+  labels      = var.labels
 
   body = templatefile("${path.module}/policies/login.rego.tpl", {
     admins      = var.admins
