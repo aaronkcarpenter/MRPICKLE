@@ -34,9 +34,9 @@ variable "lables" {
 }
 
 variable "session_key" {
-    type        = string
-    description = "Session key for the policy"
-    default     = "input.session.login"
+  type        = string
+  description = "Session key for the policy"
+  default     = "input.session.login"
 }
 
 resource "spacelift_policy" "this" {
@@ -46,8 +46,8 @@ resource "spacelift_policy" "this" {
   labels      = var.lables
 
   body = templatefile("${path.module}/policies/login.rego.tpl", {
-    admins = var.admins
-    spaces = var.spaces
+    admins      = var.admins
+    spaces      = var.spaces
     session_key = var.session_key
   })
 }
