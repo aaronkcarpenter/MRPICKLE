@@ -39,6 +39,18 @@ variable "session_key" {
   default     = "input.session.login"
 }
 
+locals {
+  # Just remove the null values from the permissions
+  spaces = {
+    for space, permissions in var.spaces : space => {
+      space_id = permissions.space_id
+      admin    = permissions.admin ? permissions.admin : []
+      write    = permissions.write ? permissions.write : []
+      read     = permissions.read ? permissions.read : []
+    }
+  }
+}
+
 resource "spacelift_policy" "this" {
   type        = "LOGIN"
   name        = var.name
@@ -47,7 +59,7 @@ resource "spacelift_policy" "this" {
 
   body = templatefile("${path.module}/login.rego.tpl", {
     admins      = var.admins
-    spaces      = var.spaces
+    spaces      = local.spaces
     session_key = var.session_key
   })
 }

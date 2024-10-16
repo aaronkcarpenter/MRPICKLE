@@ -15,7 +15,7 @@ admin {
 %{ for space_key, space_value in spaces ~}
 ## ${space_key} Section
 
-%{ if space_value.admin != null && length(space_value.admin) > 0 ~}
+%{ if length(lookup(space_value, "admin", [])) > 0 ~}
 # Admin access
 ${space_key}_admin := {
   %{ for user in space_value.admin ~}
@@ -27,7 +27,7 @@ space_admin["${space_value.space_id}"] {
 }
 %{ endif ~}
 
-%{ if space_value.write != null && length(space_value.write) > 0 ~}
+%{ if length(lookup(space_value, "write", [])) > 0 ~}
 # Write access
 ${space_key}_write := {
   %{ for user in space_value.write ~}
@@ -39,7 +39,7 @@ space_write["${space_value.space_id}"] {
 }
 %{ endif ~}
 
-%{ if space_value.read != null && length(space_value.read) > 0 ~}
+%{ if length(lookup(space_value, "read", [])) > 0 ~}
 # Read access
 ${space_key}_read := {
   %{ for user in space_value.read ~}
@@ -52,17 +52,17 @@ space_read["${space_value.space_id}"] {
 %{ endif ~}
 
 # Allow the access level defined above
-%{ if space_value.admin != null && length(space_value.admin) > 0 ~}
+%{ if length(lookup(space_value, "admin", [])) > 0 ~}
 allow {
   ${space_key}_admin[session_key]
 }
 %{ endif ~}
-%{ if space_value.write != null && length(space_value.write) > 0 ~}
+%{ if length(lookup(space_value, "write", [])) > 0 ~}
 allow {
   ${space_key}_write[session_key]
 }
 %{ endif ~}
-%{ if space_value.read != null && length(space_value.read) > 0 ~}
+%{ if length(lookup(space_value, "read", [])) > 0 ~}
 allow {
   ${space_key}_read[session_key]
 }
