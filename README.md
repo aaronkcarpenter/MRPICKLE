@@ -12,7 +12,7 @@
 ## What?
 
 This module is designed to generate login policies inside Spacelift that are convenient and simple.
-Stop worrying about how to grand folks access to your Spacelift organization and let MRPICKLE do it for you.
+Stop worrying about how to grant folks access to your Spacelift organization and let MRPICKLE do it for you.
 
 Heres a simple example of how to use this module:
 
@@ -75,7 +75,8 @@ This will create the necessary login policy that will grant access as you specif
 | <a name="input_session_key"></a> [session_key](#input\_session\_key) | Session key for the policy          | `string`                                                                                                                                                                                  | `"input.session.login"`              |    no    |
 | <a name="input_spaces"></a> [spaces](#input\_spaces)                 | Map of spaces and their permissions | <pre>map(object({<br/>    space_id = string<br/>    admin    = optional(list(string))<br/>    write    = optional(list(string))<br/>    read     = optional(list(string))<br/>  }))</pre> | `{}`                                 |    no    |
 
-What is the `session_key`? Spacelift can do comparisons against a multitude of different data points to determine if a user should be granted access.
+### What is the `session_key`?
+Spacelift can do comparisons against a multitude of different data points to determine if a user should be granted access.
 The `session_key` is the data point that will be used to determine if a user should be granted access.
 By default it uses the `input.session.login` which is the username of the user logging in. So the admins, writers, and reader inputs of this module should be the username of the user logging in.
 If the session key was something else, like a group maybe. You would set the `session_key` to that group and the admins, writers, and readers would be the group name.
