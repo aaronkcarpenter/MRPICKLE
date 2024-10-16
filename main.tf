@@ -44,9 +44,9 @@ locals {
   spaces = {
     for space, permissions in var.spaces : space => {
       space_id = permissions.space_id
-      admin    = permissions.admin ? permissions.admin : []
-      write    = permissions.write ? permissions.write : []
-      read     = permissions.read ? permissions.read : []
+      admin    = permissions.admin != null ? permissions.admin : []
+      write    = permissions.write != null ? permissions.write : []
+      read     = permissions.read != null ? permissions.read : []
     }
   }
 }
