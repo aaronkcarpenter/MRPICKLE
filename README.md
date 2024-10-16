@@ -81,4 +81,4 @@ The `session_key` is the data point that will be used to determine if a user sho
 By default, it uses the `input.session.login` which is the username of the user logging in. So the admins, writers, and reader inputs of this module should be the username of the user logging in.
 If the session key was something else, like a group maybe. You would set the `session_key` to the key in the input data and the admins, writers, and readers would be the group name.
 
-See the data input for login policies [here](https://docs.spacelift.io/concepts/policy/login-policy#data-input) too get an idea of how the session key might be used.
+See the data input for login policies [here](https://docs.spacelift.io/concepts/policy/login-policy#data-input) to get an idea of how the session key might be used.
