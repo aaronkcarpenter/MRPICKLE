@@ -45,7 +45,7 @@ resource "spacelift_policy" "this" {
   description = var.description
   labels      = var.labels
 
-  body = templatefile("${path.module}/policies/login.rego.tpl", {
+  body = templatefile("${path.module}/login.rego.tpl", {
     admins      = var.admins
     spaces      = var.spaces
     session_key = var.session_key
