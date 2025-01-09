@@ -4,12 +4,6 @@ variable "admins" {
   default     = []
 }
 
-variable "adminss" {
-  type        = list(string)
-  description = "List of local admins"
-  default     = []
-}
-
 variable "spaces" {
   type = map(object({
     space_id = string
